@@ -424,49 +424,173 @@ if (mark.bmi > john.bmi) {
 // }
 
 
-
-
 /*
 
 const jonas = [
     'Jonas',
-    'Schmedtman',
+    'Schmedtmann',
     2037 - 1991,
     'teacher',
-    ['Micael', 'Peter', 'Steven'],
+    ['Michael', 'Peter', 'Steven'],
+    true
+];
+const types = [];
+
+for (let i = 0; i < jonas.length; i++) {
+    // Reading from jonas array
+    console.log(jonas[i], typeof jonas[i]);
+
+    // Filling types array
+    // types[i] = typeof jonas[i];
+    types.push(typeof jonas[i]);
+}
+
+console.log(types);
+
+const years = [1991, 2007, 1969, 2020];
+const ages = [];
+
+for (let i = 0; i < years.length; i++) {
+    ages.push(2037 - years[i]);
+}
+console.log(ages);
+
+//continue and break
+console.log('---ONLY STRINGS ---')
+for (let i = 0; i < jonas.length; i++) {
+    if (typeof jonas[i] !== 'string') continue;
+
+    console.log(jonas[i], typeof jonas[i]);
+}
+
+//break completely terminates the whole loop
+//in this example it is going to stop when it finds a number
+
+console.log('--- Break With Number---')
+for (let i = 0; i < jonas.length; i++) {
+    if (typeof jonas[i] === 'number') break;
+
+    console.log(jonas[i], typeof jonas[i]);
+}
+
+
+*/
+
+
+//counting backwards in a loop looping backwards
+
+
+
+
+/*
+const jonas = [
+    'Jonas',
+    'Schmedtmann',
+    2037 - 1991,
+    'teacher',
+    ['Michael', 'Peter', 'Steven'],
     true
 ];
 
 
-for (let i = 0; i < jonas.length; i++) {
-    console.log(jonas[i], typeof jonas[i]);
-
-    // filling types array
-    // types[i] = typeof jonas[i];
-
-    types.push(typeof jonas[i]);
+// how to create a loop inside a loop
+for (let i = jonas.length - 1; i >= 0; i--) {
+    console.log(i, jonas[i]);
 }
 
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`-------Starting Exercise ${exercise}`);
 
-console.log(types);
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weight repitition ${rep}`);
+    }
+}
+
+let rep = 1;
+while (rep <= 10) {
+    console.log(`Lifting weights repitition ${rep}`);
+    rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1
+// console.log(dice);
+
+while (dice !== 6) {
+    console.log(`you rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1
+    if (dice === 6) console.log('Loop is about to end...');
+}
 */
 
 
 
 
-// const interestedIn = prompt('What do you want to know about Jonas? choose between firstName, lastName, age, job, and friends');
+//50. challenge #4
+//my solution
 
-// if (jonas[interestedIn]) {
-//     console.log(jonas[interestedIn]);
-// } else {
-//     console.log('Wrong request! What do you want to know about Jonas? choose between firstName, lastName, age, job, and friends')
-// }
+/*
+let bills = [
+    22,
+    295,
+    176,
+    440,
+    37,
+    105,
+    10,
+    1100,
+    86,
+    52
+];
+
+let tips = []
+let totals = []
 
 
-let person = prompt("Please enter your name", "Harry Potter");
-
-if (person != null) {
-    console.log(prompt("Hello " + person + "! How are you today?"));
+let calcTip = function (bill) {
+    return bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.2;
 }
 
-console.log('Patrick Gandy 3');
+for (let i = 0; i <= bills.length; i++) {
+    tips[i] = calcTip(bills[i]);
+}
+
+console.log(tips)
+
+
+for (let i = 0; i <= bills.length; i++) {
+    totals[i] = tips[i] + bills[i];
+}
+
+console.log(totals);
+
+
+//Jonas's Solution
+
+const calcTip = function (bill) {
+    return bill >= 50 && bill <= 300 ? bill * .15 : bill * .2
+}
+const bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const tips = [];
+const totals = [];
+
+for (let i = 0; i < bills.length; i++) {
+    const tip = calcTip(bills[i]);
+    tips.push(tip);
+    totals.push(tip + bills[i]);
+}
+
+console.log(bills, tips, totals);
+
+const calcAverage = function (arr) {
+    let sum = 0;
+    for (let i = 0; i < arr.length; i++) {
+        /// sum = sum + arr[i];
+        sum += arr[i]
+    }
+    return sum / arr.length;
+}
+console.log(calcAverage([2, 3, 7]));
+console.log(calcAverage(totals));
+console.log(calcAverage(tips));
+
+*/
