@@ -56,27 +56,42 @@
     </style>
   </head>
   <body>
+    <!-- title -->
     <h1>Random Gangsta P Songs</h1>
-
-    <label for="difficulty">Select Difficulty:</label>
-    <select id="difficulty">
-      <option value="Beginner">Beginner</option>
-      <option value="Intermediate">Intermediate</option>
-      <option value="Expert">Expert</option>
-    </select>
-
+    <!-- Insert Photo -->
+    <img
+      id="course-image"
+      src="https://images.ctfassets.net/3s5io6mnxfqz/4Es42vTSlWDez3T5mirbiQ/97dbaa8e72d578dbf7824508ba3a50c8/image4.jpg"
+      width="400px"
+    />
+    <br />
     <button id="playButton">Play Random Bop</button>
 
     <audio id="audioPlayer" controls>
       Your browser does not support the audio tag.
     </audio>
-
+    <!-- mix button -->
+    <label for="Mix">Select Mix Density: </label>
+    <select id="Mix">
+      <option value="Acoustic">Acoustic</option>
+      <option value="3 Peice">3 Peice</option>
+      <option value="5 Peice">5 Peice</option>
+    </select>
     <br />
-    <label for="songSelect">Select the song name:</label>
+    <!-- difficulty button -->
+    <label for="difficulty">Select Progression Difficulty:</label>
+    <select id="difficulty">
+      <option value="Beginner">Beginner</option>
+      <option value="Intermediate">Intermediate</option>
+      <option value="Expert">Expert</option>
+    </select>
+    <br />
+    <!-- guess song name
+    <label for="songSelect">Guess the Song Name:</label>
     <select id="songSelect">
       <option disabled selected>Select Song</option>
     </select>
-    <button id="submitGuessButton">Submit Guess</button>
+    <button id="submitGuessButton">Submit Guess</button> -->
     <p id="feedback"></p>
     <script>
       document
@@ -126,26 +141,29 @@
           selectedSongs.forEach((song) => {
             const option = document.createElement("option");
             option.value = song;
-            option.text = song.replace(/_/g, " ").replace(/\.[^/.]+$/, ""); // Remove extension and underscores
+            option.text = song.replace(/_/g, " ").replace(/\.[^/.]+$/, "");
+            // Remove extension and underscores
             songSelect.appendChild(option);
           });
 
-          document
-            .getElementById("submitGuessButton")
-            .addEventListener("click", function () {
-              const selectedGuess = document.getElementById("songSelect").value;
-              const feedback = document.getElementById("feedback");
+          document;
+          // .getElementById("submitGuessButton")
+          // .addEventListener("click", function () {
+          //   const selectedGuess = document.getElementById("songSelect").value;
+          //   const feedback = document.getElementById("feedback");
 
-              if (selectedGuess == randomSong) {
-                feedback.textContent = "Yes, that is correct!";
-                feedback.style.color = "green";
-              } else {
-                feedback.textContent = "No, that is incorrect. Try again!";
-                feedback.style.color = "red";
-              }
-            });
+          //   if (selectedGuess == randomSong) {
+          //     feedback.textContent = "Yes, that is correct!";
+          //     feedback.style.color = "green";
+          //   } else {
+          //     feedback.textContent = "No, that is incorrect. Try again!";
+          //     feedback.style.color = "red";
+          //   }
+          // });
         });
     </script>
+    <button id="submitGuessButton">Reveal the Song Name</button>
+    <br />
     <a href="https://www.chordsheet.com/preferences/song/226265#public-url"
       >here are the chord charts for these songs</a
     >
