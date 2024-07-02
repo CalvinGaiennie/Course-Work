@@ -31,6 +31,23 @@
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
     </main>
+
+    <script src="script.js"></script>
+    <button class="show-modal">Rules</button>
+
+    <div class="modal hidden">
+      <button class="close-modal">&times;</button>
+      <h1>Rules</h1>
+      <p>
+        Every time you roll a die the number on it gets added to your current
+        score. If you roll a 1 your current score gets changed to zero and it
+        becomes the other players turn. If on your turn you press hold it adds
+        your current score to your total score and it becomes the other players
+        turn. First player to 100 points wins the game.
+      </p>
+    </div>
+    <div class="overlay hidden"></div>
+
     <script src="script.js"></script>
   </body>
 </html>
