@@ -30,6 +30,22 @@
 
 //END OF STARTER CODE
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  fri: {
+    open: 11,
+    close: 23,
+  },
+  sat: {
+    open: 0, // Open 24 hours
+    close: 24,
+  },
+};
+
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -37,24 +53,14 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
-  order: function (starterIndex, mainIndex) {
+  //ES 6 enhanced opening hours
+  openingHours,
+
+  //simpler method
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
-
+  //old method
   orderDelivery: function ({
     starterIndex = 1,
     mainIndex = 0,
@@ -65,7 +71,7 @@ const restaurant = {
       `Order received ${this.starterMenu[starterIndex]} and ${this.mainMenu[mainIndex]} will be delivered to ${adress} at ${time}`
     );
   },
-
+  // old method
   orderPasta: function (ing1, ing2, ing3) {
     console.log(
       `Here is your delicous pasta with ${ing1}. ${ing2} and ${ing3}`
@@ -77,6 +83,8 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+
+if (restaurant.openingHours.mon) console.log(restaurant.openingHours.mon.open);
 
 ////////////////////////////////////////////////////
 //For of Loop
