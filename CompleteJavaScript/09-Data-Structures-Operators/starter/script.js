@@ -83,10 +83,100 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+///////////////////////////////////////////////////////////Working With Strings Part 3
+console.log('a + very + nice + string'.split('+'));
+console.log('Jonas Schmedtmann'.split(' '));
+const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
 
+const newName = ['Mr.', firstName, lastName.toUpperCase()].join(' ');
+console.log(newName);
+
+const capitalizeName = function (name) {
+  const names = name.split(' ');
+  const namesUpper = [];
+  for (const n of names) {
+    // namesUpper.push(n[0].toUpperCase() + n.slice(1));
+    //Alternative Solution
+    namesUpper.push(n.replace(n[0], n[0].toUpperCase()));
+  }
+  console.log(namesUpper.join(' '));
+};
+
+capitalizeName('jessica ann smith davis');
+capitalizeName('jonas schmedtmann');
+
+///////////////////////////////////////////////////////
+//Working WIth Strings - Part 2
+/*
+const airline = 'TAP Air Portugal';
+console.log(airline.toLowerCase());
+console.log(airline.toUpperCase());
+
+// fix ccapitalization in name
+const passenger = 'jOnAS';
+const passengerLower = passenger.toLowerCase();
+const passengerCorrect =
+  passengerLower[0].toUpperCase() + passengerLower.slice(1);
+console.log(passengerCorrect);
+
+// Comparing emails
+const email = 'hello@jonas.io';
+const loginEmail = 'Hello@Jonas.Io \n';
+
+// const lowerEmail = loginEmail.toLowerCase();
+// const trimmedEmail = lowerEmail.trim();
+// console.log(trimmedEmail);
+
+//same thing but cleaner
+
+const normalizedEmail = loginEmail.toLowerCase().trim();
+console.log(normalizedEmail);
+
+console.log(email === normalizedEmail);
+
+// replacing
+const priceGB = '288,97P';
+const priceUS = priceGB.replace('P', '$').replace(',', '.');
+
+console.log(priceUS);
+
+const announcement =
+  'All Passengers come to boarding door 23. Boarding door 23!';
+
+console.log(announcement.replaceAll('door', 'gate'));
+
+// Booleans
+const plane = 'Airbus320neo';
+console.log(plane.includes('A320'));
+console.log(plane.includes('Boeing'));
+console.log(plane.startsWith('Air'));
+
+if (plane.startsWith('Airbus') && plane.endsWith('neo')) {
+  console.log('Part of the New Airbus family');
+}
+
+//Practice exercise
+const checkBaggage = function (items) {
+  const baggage = items.toLowerCase();
+
+  if (baggage.includes('knife') || baggage.includes('gun')) {
+    console.log('You are NOT allowed on board');
+  } else {
+    console.log('Welcome aboard');
+  }
+};
+
+checkBaggage('I have a laptopm, some Food and a pocket Knife');
+checkBaggage('Socks and a camera');
+checkBaggage('Got some snacks and a gun for protections');
+
+console.log('aasas');
+*/
+///////////////////////////////////////////////////////////
+//Working With Strings Part 1
+/*
 const airline = 'TAP Air Portugal';
 const plane = 'A320';
-
 console.log(plane[0]);
 console.log(plane[1]);
 console.log(plane[2]);
@@ -117,6 +207,7 @@ const checkMiddleSeat = function (seat) {
 checkMiddleSeat('11B');
 checkMiddleSeat('23C');
 checkMiddleSeat('3E');
+*/
 /////////////////////////////////////////////////////////
 //MAPS
 /*
@@ -651,64 +742,3 @@ const game = {
 //        Lewandowski: 2
 // }
 // GOOD LUCK 😀
-/*
-1;
-console.log(game.scored);
-for (let i = 0; i < game.scored.length; i++)
-  console.log(`Goal: ${i + 1} ${game.scored[i]}`);
-
-//jonas's Solution
-
-for (const [i, player] of game.scored.entries())
-  console.log(`Goal ${i + 1}: ${player}`);
-
-2;
-const odds = Object.values(game.odds);
-let average = 0;
-for (const odd of odds) average += odd;
-
-average /= odds.length;
-console.log(average);
-
-3;
-for (const [team, odd] of Object.entries(game.odds)) {
-  const teamStr = team === 'x' ? 'draw' : `victory ${game[team]}`;
-  console.log(`Odd of ${teamStr} ${odd} `);
-}
-4;
-
-//////////////////////////////////////////////////
-// Coding Challenge 3
-const gameEvents = new Map([
-  [17, 'GOAL'],
-  [36, 'Substitution'],
-  [47, 'GOAL'],
-  [61, 'Substitution'],
-  [64, 'Yellow Card'],
-  [69, 'Red Card'],
-  [70, 'Substitution'],
-  [72, 'Substitution'],
-  [76, 'GOAL'],
-  [80, 'GOAL'],
-  [92, 'Yellow Card'],
-]);
-// Your tasks:
-// 1. Create an array 'events' of the different game events that happened (no duplicates)
-console.log(gameEvents.values());
-const events = [...new Set(gameEvents.values())];
-console.log(events);
-// 2. After the game has finished,is was found that the yellow card from minute 64 was unfair. So remove this event from the game events log.
-gameEvents.delete(64);
-// 3. Compute and log the following string to the console: "An event happened, on average, every 9 minutes" (keep in mind that a game has 90 minutes)
-const time = [...gameEvents.keys()].pop();
-console.log(time);
-console.log(
-  `An event happened, on average every ${time / gameEvents.size} minutes`
-);
-// 4. Loop over 'gameEvents' and log each element to the console, marking whether it's in the first half or second half (after 45 min) of the game, like this:
-// [FIRST HALF] 17: ⚽   GOAL
-for (const [min, event] of gameEvents) {
-  const half = min <= 45 ? 'FIRST' : 'SECOND';
-  console.log(`[${half} HALF] ${min}: ${event}`);
-}
-*/
