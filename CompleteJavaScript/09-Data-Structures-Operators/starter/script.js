@@ -29,7 +29,7 @@
 // };
 
 //END OF STARTER CODE
-
+/*
 const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
 const openingHours = {
   [weekdays[3]]: {
@@ -45,7 +45,6 @@ const openingHours = {
     close: 24,
   },
 };
-
 const restaurant = {
   name: 'Classico Italiano',
   location: 'Via Angelo Tavanti 23, Firenze, Italy',
@@ -83,7 +82,83 @@ const restaurant = {
     console.log(otherIngredients);
   },
 };
+*/
+///////////////////////////////////////////////////
+//String Methods Practice
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+const getCode = str => str.slice(0, 3).toUpperCase();
+
+for (const flight of flights.split('+')) {
+  const [type, from, to, time] = flight.split(';');
+  const output = `${type.startsWith('_Delayed') ? '🔴' : ''}${type.replaceAll(
+    '_',
+    ' '
+  )} ${getCode(from)} ${getCode(to)} (${time.replace(':', 'h')})`.padStart(36);
+  console.log(output);
+}
+
+////////////////////////////////////////////////////////
+//Coding Challenge 4
+/*
+Write a program that receives a list of varibale names written in underscore_case4 and convert them to camelCase.
+
+the input will come from a textarea invserted into the DOM (see code below), and conversion will happen when the button is pressed.
+
+THIS TEST DATA (pasted to textarea)
+underscore_case
+ first_name
+Some_Variable
+  calclate_AGE
+delayed_departure
+
+SHOULD PRODUCE THIS OUTPUT ( 5 seperate console.log outoputs)
+underscoreCase    ✅
+firstName         ✅✅
+someVariable      ✅✅✅
+calculateAge      ✅✅✅✅
+delayedDeparture  ✅✅✅✅✅
+
+HINT 1: Remember which character defines a new line in the textarea.
+HINT 2: The solution only needs to work for a variable made out of 2 w2words, like a_b
+HINT 3: Start without worrying aboiut the ✅. Tackle that only after you have4 the variable name conversion working.
+HINT 4: This challenge is difficult on pourpose, so start watching the solution in case you're stuck.
+Then unpause and continue!
+
+\n
+
+document.body.append(document.createElement('textarea'));
+document.body.append(document.createElement('button'));
+
+document.querySelector('button').addEventListener('click', function () {
+  const text = document.querySelector('textarea').value;
+  const rows = text.split('\n');
+  console.log(rows);
+
+  for (const [i, row] of rows.entries()) {
+    const [first, second] = row.toLowerCase().trim().split('_');
+    const output = `${first}${second.replace(
+      second[0],
+      second[0].toUpperCase()
+    )}`;
+
+    console.log(`${output.padEnd(20)}${'✅'.repeat(i + 1)}`);
+  }
+});
+*/
+// underscore_case
+// first_name
+// Some_Variable
+// calclate_AGE
+// delayed_departure
+
 ///////////////////////////////////////////////////////////Working With Strings Part 3
+/*
 console.log('a + very + nice + string'.split('+'));
 console.log('Jonas Schmedtmann'.split(' '));
 const [firstName, lastName] = 'Jonas Schmedtmann'.split(' ');
@@ -105,6 +180,32 @@ const capitalizeName = function (name) {
 capitalizeName('jessica ann smith davis');
 capitalizeName('jonas schmedtmann');
 
+//Padding
+const message = 'Go to gate 23!';
+console.log(message.padStart(25, '+'));
+console.log();
+'Jonas'.padStart(25, '+');
+console.log(message.padStart(25, '+').padEnd(35, '+'));
+
+const maskCreditCard = function (number) {
+  const str = number + '';
+  const last = str.slice(-4);
+  return last.padStart(str.length, '*');
+};
+console.log(maskCreditCard(123412341234));
+console.log(maskCreditCard(864534));
+
+//Repeat
+const message2 = 'Bad weather... All Departures Delayed... ';
+console.log(message2.repeat(5));
+
+const planesInLine = function (n) {
+  console.log(`There are ${n} planes in line ${'🛩'.repeat(n)}`);
+};
+planesInLine(5);
+planesInLine(3);
+planesInLine(8);
+*/
 ///////////////////////////////////////////////////////
 //Working WIth Strings - Part 2
 /*
