@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 /*
 let hasDriversLicense = false;
@@ -9,7 +9,6 @@ if (hasDriversLicense) console.log('I can drive');
 
 console.log('hello')
 */
-
 
 /*
 function logger() {
@@ -33,7 +32,6 @@ console.log(appleOrangeJuice);
 console.log(fruitProcessor(1, 45));
 console.log(fruitProcessor(7, 11));
 */
-
 
 /*
 
@@ -111,11 +109,7 @@ console.log(yearsUntilRetirement(1991, 'Jonas'));
 console.log(yearsUntilRetirement(1950, 'Mike'));
 */
 
-
-
 // return `${firstName} retires in ${retirement} years`;
-
-
 
 // Challenge 5
 
@@ -176,7 +170,6 @@ console.log(jonas);
 
 */
 
-
 // using an array in an array
 
 /*
@@ -194,9 +187,7 @@ const ages = [calcAge(years[0]), calcAge(years[1]), calcAge(years[years.length -
 console.log(ages);
 */
 
-
 // Basic Array Methods (array operations)
-
 
 /*
 const friends = ['Michael', 'Steven', 'Peter'];
@@ -209,8 +200,6 @@ friends.unshift('John');
 console.log(friends);
 console.log(newLength);
 */
-
-
 
 /*
 //remove elements
@@ -242,10 +231,7 @@ if (friends.includes('Peter')) {
 
 */
 
-
-
 //Coding Challenge 6?
-
 
 /*
 const calcTip = function (bill) {
@@ -277,13 +263,7 @@ const jonas = {
 };
 */
 
-
-
-
-
-
 //how to retreive data from objects and dot vs bracket notation
-
 
 /*
 const jonas = {
@@ -334,11 +314,6 @@ console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his bes
 
 */
 
-
-
-
-
-
 /*
 //you can add functions to objects
 
@@ -380,9 +355,6 @@ console.log(jonas.getSummary());
 
 */
 
-
-
-
 /*
 const mark = {
     firstName: 'Mark',
@@ -416,13 +388,10 @@ if (mark.bmi > john.bmi) {
 };
 */
 
-
-
 // for loop keeps running while condition is TRUE
 // for (let rep = 1; rep <= 30; rep = rep + 1) {
 //     console.log(`lifting weights repition ${rep}`);
 // }
-
 
 /*
 
@@ -476,11 +445,7 @@ for (let i = 0; i < jonas.length; i++) {
 
 */
 
-
 //counting backwards in a loop looping backwards
-
-
-
 
 /*
 const jonas = [
@@ -521,9 +486,6 @@ while (dice !== 6) {
     if (dice === 6) console.log('Loop is about to end...');
 }
 */
-
-
-
 
 //50. challenge #4
 //my solution
