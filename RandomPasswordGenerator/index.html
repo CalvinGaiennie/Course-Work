@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Password Generator</title>
+  </head>
+  <body>
+    <span>
+      <strong class="yearsOfGrowth"
+        >How long do you want your password to be?</strong
+      >
+      <br />
+      <input id="length" class="length" type="number" placeholder="10" />
+      <!-- <strong class="ml-2">Option 1</strong>
+      <br />
+      <select class="ml-1" name="activeStatus" [(ngModel)]="activeStatus">
+        <option></option>
+        <option [ngvalue]="true">Active</option>
+        <option [ngvalue]="false">Not Active</option>
+      </select> -->
+    </span>
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+      <form id="Solution">
+        <button
+          type="button"
+          class="generate"
+          onclick="generatePassword(
+          passwordLength,
+          includeLowercase,
+          includeUppercase,
+          includeNumbers,
+          includeSymbols
+        )"
+        >
+          Generate Solution
+        </button>
+        <h2>Solution: <span id="solutionText"></span></h2>
+      </form>
+    </div>
+    <script src="index.js"></script>
+  </body>
+</html>
