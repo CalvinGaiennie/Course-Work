@@ -73,7 +73,7 @@ const displayMovements = function (movements) {
       i + 1
     } ${type}</div>
         <div class="movements__date">3 days ago</div>
-        <div class="movements__value">${mov}</div>
+        <div class="movements__value">${mov}€</div>
       </div>`;
 
     containerMovements.insertAdjacentHTML('afterbegin', html);
@@ -88,6 +88,29 @@ const calcDisplayBalance = function (movements) {
 
 calcDisplayBalance(account1.movements);
 // console.log(containerMovements.innerHTMl);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumIn.textContent = `${incomes} €`;
+
+  const out = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov, 0);
+  labelSumOut.textContent = `${Math.abs(out)} €`;
+
+  const interest = movements
+    .filter(mov => mov > 0)
+    .map(deposit => (deposit * 1.2) / 100)
+    .filter((int, i, arr) => {
+      console.log(arr);
+      return int >= 1;
+    })
+    .reduce((acc, int) => acc + int, 0);
+  labelSumInterest.textContent = `${Math.abs(interest)} €`;
+};
+calcDisplaySummary(account1.movements);
 
 const createUsernames = function (acc) {
   acc.forEach(function (acc) {
@@ -159,9 +182,10 @@ TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
 
 GOOD LUCK 😀
 */
+/*
 const data = [5, 2, 4, 1, 15, 8, 3];
 
-const data2 = data
+const hAges = data
   .map(function (i) {
     if (i <= 2) return i * 2;
     else return 16 + i * 4;
@@ -171,13 +195,30 @@ const data2 = data
   });
 
 const dataAvg =
-  data2.reduce(function (acc, i) {
+  hAges.reduce(function (acc, i) {
     return acc + i;
-  }) / data2.length;
+  }) / hAges.length;
 console.log(data.length);
-console.log(data2);
+console.log(hAges);
 console.log(dataAvg);
 
+////////
+//Jonas's Solution
+const calcAverageHumanAge = function (ages) {
+  const humanAges = ages.map(age => (age <= 2 ? 2 * age : 16 + age * 4));
+  const adults = humanAges.filter(age => age >= 18);
+  console.log(humanAges, adults);
+
+  const average = adults.reduce(
+    (acc, age, i, arr) => acc + age / arr.length,
+    0
+  );
+  return average;
+};
+const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
+const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
+console.log(avg1, avg2);
+*/
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // LECTURES
@@ -333,7 +374,7 @@ console.log(depositsFor);
 const withdrawals = movements.filter(mov => mov < 0);
 console.log(withdrawals);
 */
-
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 const balance = movements.reduce(function (acc, cur, i, arr) {
@@ -352,3 +393,16 @@ const max = movements.reduce((acc, mov) => {
   else return mov;
 }, movements[0]);
 // console.log(max);
+*/
+
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+const eurToUsd = 1.1;
+const totalDepositsUSD = movements
+  .filter(mov => mov > 0)
+  // .map((mov, i, arr) => {
+  //   console.log(arr);
+  //   return mov * eurToUsd;
+  // })
+  .map(mov => mov * eurToUsd)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(totalDepositsUSD);
