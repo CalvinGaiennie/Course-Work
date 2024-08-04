@@ -79,38 +79,35 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance} EUR`;
 };
 
-calcDisplayBalance(account1.movements);
 // console.log(containerMovements.innerHTMl);
 
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (acc, movements) {
+  const incomes = acc.movements
     .filter(mov => mov > 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes} €`;
 
-  const out = movements
+  const out = acc.movements
     .filter(mov => mov < 0)
     .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(out)} €`;
 
-  const interest = movements
+  const interest = acc.movements
     .filter(mov => mov > 0)
-    .map(deposit => (deposit * 1.2) / 100)
+    .map(deposit => (deposit * acc.interestRate) / 100)
     .filter((int, i, arr) => {
-      console.log(arr);
+      // console.log(arr);
       return int >= 1;
     })
     .reduce((acc, int) => acc + int, 0);
   labelSumInterest.textContent = `${Math.abs(interest)} €`;
 };
-calcDisplaySummary(account1.movements);
 
 const createUsernames = function (acc) {
   acc.forEach(function (acc) {
@@ -123,6 +120,35 @@ const createUsernames = function (acc) {
 };
 
 createUsernames(accounts);
+
+//Event Handlers
+
+let currentAccount;
+
+btnLogin.addEventListener('click', function (event) {
+  //Preven form from submitting
+  event.preventDefault();
+
+  currentAccount = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  console.log(currentAccount);
+  if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    //Display UI and a welcome message
+    labelWelcome.textContent = `Welcome back , ${
+      currentAccount.owner.split(' ')[0]
+    }`;
+    containerApp.style.opacity = 100;
+    //clear input fields
+    inputLoginUsername.value = inputLoginPin.value = '';
+    inputLoginPin.blur();
+    // display and calculate balance summary and movements
+    displayMovements(currentAccount.movements);
+    calcDisplayBalance(currentAccount.movements);
+    calcDisplaySummary(currentAccount);
+  }
+});
+
 // console.log(accounts);
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -218,6 +244,28 @@ const calcAverageHumanAge = function (ages) {
 const avg1 = calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]);
 const avg2 = calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]);
 console.log(avg1, avg2);
+*/
+
+////////////////////////////////////////////////////
+//Coding Challenge #3
+
+/*
+Rewrite the 'calcAverageHumanAge' fucntion from the prefvious cha llenge, but this time as an arrow function, and using chaining!
+
+TEST DATA 1: [5, 2, 4, 1, 15, 8, 3]
+TEST DATA 2: [16, 6, 10, 5, 6, 1, 4]
+*/
+/*
+const data = [5, 2, 4, 1, 15, 8, 3];
+const data2 = [16, 6, 10, 5, 6, 1, 4];
+
+const calcAverageHumanAge = data =>
+  data
+    .map(age => (age <= 2 ? 2 * age : 16 + age * 4))
+    .filter(age => age >= 18)
+    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+console.log(calcAverageHumanAge(data));
+console.log(calcAverageHumanAge(data2));
 */
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -394,7 +442,7 @@ const max = movements.reduce((acc, mov) => {
 }, movements[0]);
 // console.log(max);
 */
-
+/*
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 const eurToUsd = 1.1;
 const totalDepositsUSD = movements
@@ -406,3 +454,15 @@ const totalDepositsUSD = movements
   .map(mov => mov * eurToUsd)
   .reduce((acc, mov) => acc + mov, 0);
 console.log(totalDepositsUSD);
+*/
+/*
+const movements0 = accounts[0].movements;
+console.log(movements0);
+const foundItem = movements0.find(mov => mov < 0);
+console.log(foundItem);
+
+console.log(accounts);
+
+const account = accounts.find(acc => (acc.owner = 'Jessica Davis'));
+console.log(account);
+*/

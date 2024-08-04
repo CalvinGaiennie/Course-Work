@@ -359,6 +359,7 @@ boardPassengers(180, 3);
 
 //Coding Challenge #2
 
+/*
 (function () {
   const header = document.querySelector('h1');
   header.style.color = 'red';
@@ -367,3 +368,6 @@ boardPassengers(180, 3);
     header.style.color = 'blue';
   });
 })();
+*/
+
+calcAverageHumanAge;
