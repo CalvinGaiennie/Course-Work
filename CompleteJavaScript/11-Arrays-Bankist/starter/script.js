@@ -173,6 +173,24 @@ btnTransfer.addEventListener('click', function (e) {
     updateUI(currentAccount);
   }
 });
+
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+  if (
+    inputCloseUsername.value === currentAccount.username &&
+    Number(inputClosePin.value) === currentAccount.pin
+  ) {
+    const index = accounts.findIndex(
+      acc => acc.username === currentAccount.username
+    );
+    console.log(index);
+    accounts.splice(index, 1);
+    containerApp.style.opacity = 0;
+    console.log(accounts);
+  }
+  inpuutTransferAmount.value = inputTransferTo.value = '';
+});
+console.log(accounts);
 // console.log(accounts);
 ///////////////////////////////////////
 // Coding Challenge #1
