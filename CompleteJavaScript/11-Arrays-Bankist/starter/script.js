@@ -174,6 +174,19 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnLoan.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputLoanAmount.value);
+
+  if (amount > 0 && currentAccount.movements.some(mov => mov >= amount * 0.1)) {
+    //add movment'
+    currentAccount.movements.push(amount);
+    //update UI
+    updateUI(currentAccount);
+  }
+  inputLoanAmount.value = '';
+});
+
 btnClose.addEventListener('click', function (e) {
   e.preventDefault();
   if (
@@ -190,7 +203,7 @@ btnClose.addEventListener('click', function (e) {
   }
   inpuutTransferAmount.value = inputTransferTo.value = '';
 });
-console.log(accounts);
+// console.log(accounts);
 // console.log(accounts);
 ///////////////////////////////////////
 // Coding Challenge #1
@@ -508,3 +521,77 @@ console.log(accounts);
 const account = accounts.find(acc => (acc.owner = 'Jessica Davis'));
 console.log(account);
 */
+
+////////////////////////////////////////////////////
+const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
+/*
+// Equality
+console.log(movements.some(mov => mov === -130));
+
+const anyDeposits = movements.some(mov => mov > 0);
+console.log(anyDeposits);
+
+//Every
+console.log(movements.every(mov => mov > 0));
+console.log(account4.movements.every(mov => mov > 0));
+
+//Seperate callback
+const deposit = mov => mov > 0;
+console.log(movements.some(deposit));
+console.log(movements.every(deposit));
+console.log(movements.filter(deposit));
+*/
+
+/*
+const arr = [[1, 2, 3], [4, 5, 6], 7, 8];
+const arrDeep = [[[1, 2], 3], [4, [5, 6]], 7, 8];
+console.log(arrDeep.flat(1));
+console.log(arrDeep.flat(2));
+const accountMovements = accounts.map(acc => acc.movements);
+console.log(accountMovements);
+const allMovements = accountMovements.flat();
+console.log(allMovements);
+
+//flat
+const overalBalance = accounts
+  .map(acc => acc.movements)
+  .flat()
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance);
+
+//flatmap
+const overalBalance2 = accounts
+  .flatMap(acc => acc.movements)
+  .reduce((acc, mov) => acc + mov, 0);
+console.log(overalBalance2);
+*/
+/////////////////////////////////////////////////////////////////
+/*
+//Strings
+const owners = ['Jonas', 'Zach', 'Adam', 'Martha'];
+console.log(owners.sort());
+console.log(owners);
+*/
+//Numbers
+console.log(movements);
+
+// return < 0 A, B (keep order)
+//return > 0 B, A (switch order)
+
+//Ascending
+// movements.sort((a, b) => {
+//   if (a > b) return 1;
+//   if (b > a) return -1;
+// });
+//simpler way to write this
+movements.sort((a, b) => a - b);
+console.log(movements);
+
+//Decending
+// movements.sort((a, b) => {
+//   if (a > b) return -1;
+//   if (b > a) return 1;
+// });
+movements.sort((a, b) => b - a);
+
+console.log(movements);
