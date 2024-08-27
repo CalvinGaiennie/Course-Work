@@ -291,6 +291,7 @@ console.log(Number.isInteger(23 / 0));
 */
 
 /////////////////////////////////////////////////////////////////
+/*
 console.log(Math.sqrt(25));
 console.log(25 ** (1 / 2));
 console.log(8 ** (1 / 3));
@@ -328,8 +329,9 @@ console.log((2.7).toFixed(0));
 console.log((2.7).toFixed(3));
 console.log((2.345).toFixed(2));
 console.log(+(2.345).toFixed(2));
+*/
 //////////////////////////////////////////////////////
-
+/*
 //Remainder
 console.log(5 % 2);
 
@@ -341,3 +343,62 @@ console.log(7 % 2);
 const isEven = n => n % 2 === 0;
 console.log(isEven(8));
 console.log(isEven(11));
+*/
+////////////////////////////////////////////////////////
+//287,460,000,000
+/*const diameter = 287_460_000_000;
+
+console.log(diameter);
+const priceCents = 345_99;
+console.log(priceCents);
+
+const transferFee = 15_00;
+
+const PI = 3.1415;
+console.log(PI);
+
+console.log(Number('230_000')); //this will output NaN
+*/
+/////////////////////////////////////////////////////
+/*
+console.log(2 ** 53 - 1);
+console.log(Number.MAX_SAFE_INTEGER);
+console.log(2 ** 53 + 5);
+
+console.log(
+  467857889577890568457756789695677867859764897668794768597896984567897890598n
+);
+console.log(
+  BigInt(
+    467857889577890568457756789695677867859764897668794768597896984567897890598
+  )
+);
+
+//Operations
+console.log(10000n + 10000n);
+console.log(
+  6809707855673789067896345564908n * 90890756789678945673789673422345787989076n
+);
+
+// console.log(
+//   6809707855673789067896345564908n * 90890756789678945673789673422345787989076
+// );
+const huge = 90890756789678945673789673422345787989076;
+console.log(
+  6809707855673789067896345564908n *
+    BigInt(90890756789678945673789673422345787989076)
+);
+
+//Exceptions
+console.log(20n > 15);
+console.log(20n === 20);
+console.log(typeof 20n);
+console.log('20' == 20n);
+
+console.log(huge + 'is REALLY big!!!');
+
+//Divisions
+console.log(10n / 3n);
+console.log(11n / 3n);
+console.log(10 / 3);
+*/
