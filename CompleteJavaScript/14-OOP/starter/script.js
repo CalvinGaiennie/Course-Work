@@ -328,6 +328,7 @@ DATA CAR 1: 'Tesla' going at 120 km/h, with a charge of 23%
 GOOD LUCK 😀
 */
 
+/*
 const Car = function (make, speed) {
   this.make = make;
   this.speed = speed;
@@ -355,7 +356,80 @@ EV.prototype.chargeBattery = function (chargeTo) {
   this.charge = chargeTo;
 };
 
-EV.prototype.charge;
+EV.prototype.accelerate = function () {
+  this.speed += 20;
+  this.charge--;
+  console.log(
+    `${this.make} is going at ${this.speed} km/h, with a a charge of ${this.charge}`
+  );
+};
 const tesla = new EV('Tesla', 120, 23);
 tesla.chargeBattery(90);
 console.log(tesla);
+tesla.brake();
+tesla.accelerate();
+*/
+
+///////////////////////////////////////////////
+//Inheritance between "Classes": ES6 Classes
+
+class PersonCl {
+  constructor(fullName, birthYear) {
+    this.fullName = fullName;
+    this.birthYear = birthYear;
+  }
+
+  //Instance Methods
+
+  calcAge() {
+    console.log(2037 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}`);
+  }
+
+  get age() {
+    return 2037 - this.birthYear;
+  }
+
+  set fullName(name) {
+    console.log(name);
+    if (name.includes(' ')) this._fullName = name;
+    else alert(`${name} is not a full name!`);
+  }
+
+  get fullName() {
+    return this._fullName;
+  }
+
+  static hey() {
+    console.log('Hey there 👋');
+  }
+}
+
+class StudentCl extends PersonCl {
+  constructor(fullName, birthYear, course) {
+    // Always needs to happen first!
+    super(fullName, birthYear);
+    this.course = course;
+  }
+
+  introduce() {
+    console.log(`My name is ${this.fullName} and I study ${this.course}`);
+  }
+
+  calcAge() {
+    console.log(
+      `I'm ${
+        2037 - this.birthYear
+      } years old, but as a student I feel more like ${
+        2037 - this.birthYear + 10
+      }`
+    );
+  }
+}
+
+const martha = new StudentCl('Matha Jones', 2012, 'Computer Science');
+martha.introduce();
+martha.calcAge();
