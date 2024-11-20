@@ -439,7 +439,7 @@ martha.calcAge();
 
 //////////////////////////////////////////////
 // Inheritance Between "Classes: Object.create"
-
+/*
 const PersonProto = {
   calcAge() {
     console.log(2037 - this.birthYear);
@@ -466,3 +466,78 @@ const jay = Object.create(StudentProto);
 jay.init('Jay', 2010, 'Computer Science');
 jay.introduce();
 jay.calcAge();
+*/
+
+//Public fields
+//Private fields
+//Public methods
+//Private methods
+
+class Account {
+  //1)Public fields
+  locale = navigator.language;
+
+  //2) private fields
+  #movements = [];
+  #pin;
+
+  constructor(owner, currency, pin) {
+    this.owner = owner;
+    this.currency = currency;
+
+    this.#pin = pin;
+
+    console.log(`Thanks for openeing an account, ${owner}`);
+  }
+
+  // 3) Public Methods
+
+  //Public Interface
+  getMovementes() {
+    return this.#movements;
+  }
+  deposit(val) {
+    this.#movements.push(val);
+    return this;
+  }
+  withdraw(val) {
+    this.deposit(-val);
+    return this;
+  }
+
+  requestLoan(val) {
+    if (this._approveLoan(val)) {
+      this.deposit(val);
+      console.log('Loan Approved');
+    }
+    return this;
+  }
+
+  // 4) Private Methods
+  // #approveLoan(val) {
+  _approveLoan(val) {
+    return true;
+  }
+}
+
+const acc1 = new Account('Jonas', 'EUR', 1111);
+console.log(acc1);
+
+acc1.deposit(250);
+acc1.withdraw(140);
+acc1.requestLoan(1000);
+// acc1.approveLoan(1000);
+console.log(acc1.getMovementes());
+
+console.log(acc1);
+// console.log(acc1.pin);
+
+console.log(acc1.getMovementes());
+// console.log(acc1.#movements);
+// console.log(acc1.#approveLoan(100));
+
+//Chaining
+acc1.deposit(300).deposit(500).withdraw(35).requestLoan(25000).withdraw(4000);
+console.log(acc1.getMovementes());
+
+console.log(218 / 329);
